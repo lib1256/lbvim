@@ -239,7 +239,7 @@ copy /Y D:\libin\.vim\mygvim\.vimrc C:\Users\admin\
 git remote add gitee https://gitee.com/lib1256/lbvim.git
 
 # push本地提交到gitee:
-git push gitee master  https://gitee.com/lib1256/lbvim.git
+git push gitee master
 ```
 
 
