@@ -29,7 +29,11 @@ endfunc
 " packages begin
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
-	let g:bundle_group = []
+    if has('nvim')
+        let g:bundle_group = ['lb_vim', 'lb_nvim', 'simple', 'basic']
+    else
+        let g:bundle_group = ['lb_vim', 'simple', 'basic']
+    endif
 endif
 
 let g:bundle_enabled = {}
@@ -39,7 +43,69 @@ let s:enabled = g:bundle_enabled
 
 call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 
-
+"----------------------------------------------------------------------
+" package group - lbvim
+"----------------------------------------------------------------------
+if has_key(s:enabled, 'lb_vim')
+    Plug 'yianwillis/vimcdoc'
+    Plug 'glepnir/nvim-lua-guide-zh'
+	Plug 'skywind3000/asyncrun.vim'
+    Plug 'skywind3000/asynctasks.vim'
+    Plug 'skywind3000/vim-quickui'
+    Plug 'skywind3000/vim-terminal-help'
+    Plug 'skywind3000/quickmenu.vim'
+    Plug 'skywind3000/vim-cppman'
+    if has('python3') || has('python')
+        Plug 'Yggdroot/LeaderF'
+        Plug 'tamago324/LeaderF-filer'
+        Plug 'voldikss/LeaderF-emoji'
+        IncScript lb_vim/lb_leaderf.vim
+    endif
+	Plug 'voldikss/vim-translator'
+    if 1
+        " Echo translation in the cmdline
+        nmap <silent> <Leader>tt <Plug>Translate
+        vmap <silent> <Leader>tt <Plug>TranslateV
+        " Display translation in a window
+        nmap <silent> <Leader>tw <Plug>TranslateW
+        vmap <silent> <Leader>tw <Plug>TranslateWV
+        " Replace the text with translation
+        nmap <silent> <Leader>tr <Plug>TranslateR
+        vmap <silent> <Leader>tr <Plug>TranslateRV
+        let g:translator_window_enable_icon = v:true
+		let g:translator_default_engines = ['trans', 'bing','youdao', 'haici', 'iciba', 'baicizhan', 'google', 'sdcv']
+    endif
+	Plug 'luochen1990/rainbow'
+	let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+    let g:rainbow_conf = {
+                \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+                \	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+                \	'operators': '_,_',
+                \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+                \	'separately': {
+                \		'*': {},
+                \		'tex': {
+                \			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+                \		},
+                \		'lisp': {
+                \			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+                \		},
+                \		'vim': {
+                \			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+                \		},
+                \		'html': {
+                \			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+                \		},
+                \		'css': 0,
+                \		'nerdtree': 0,
+                \	}
+                \}
+endif
+"----------------------------------------------------------------------
+" package group - lb_nvim
+"----------------------------------------------------------------------
+if has_key(s:enabled, 'lb_nvim')
+endif
 "----------------------------------------------------------------------
 " package group - simple
 "----------------------------------------------------------------------
@@ -147,10 +213,10 @@ if has_key(s:enabled, 'basic')
 	endif
 	
 	if has('python3') || has('python')
-		Plug 'Yggdroot/LeaderF'
-		Plug 'tamago324/LeaderF-filer'
-		Plug 'voldikss/LeaderF-emoji'
-		IncScript site/bundle/leaderf.vim
+		" Plug 'Yggdroot/LeaderF'
+		" Plug 'tamago324/LeaderF-filer'
+		" Plug 'voldikss/LeaderF-emoji'
+		" IncScript site/bundle/leaderf.vim
 	else
 		Plug 'ctrlpvim/ctrlp.vim'
 		Plug 'tacahiroy/ctrlp-funky'
@@ -252,7 +318,7 @@ end
 if has_key(s:enabled, 'opt')
 	Plug 'dyng/ctrlsf.vim'
 	Plug 'tpope/vim-speeddating'
-	Plug 'voldikss/vim-translator'
+	" Plug 'voldikss/vim-translator'
 	" Plug 'tpope/vim-apathy'
 	" Plug 'mh21/errormarker.vim'
 
@@ -287,7 +353,7 @@ if has_key(s:enabled, 'opt')
 		let g:python3_host_prog="python"
 	endif
 
-	if 1
+	if 0
 		" Echo translation in the cmdline
 		nmap <silent> <Leader>tt <Plug>Translate
 		vmap <silent> <Leader>tt <Plug>TranslateV

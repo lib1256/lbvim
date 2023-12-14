@@ -22,6 +22,8 @@ IncScript init/gui.vim
 IncScript init/menu.vim
 IncScript init/unix.vim
 
+IncScript lb_vim/lb_mswin.vim
+IncScript lb_vim/lb_keymaps.vim
 
 if has('nvim') == 0
 	let name = expand('~/.vim/local.vim')
