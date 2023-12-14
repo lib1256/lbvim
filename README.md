@@ -233,5 +233,15 @@ mklink /d "C:\Users\admin\.vim" "D:\libin\.vim"
 copy /Y D:\libin\.vim\mygvim\.vimrc C:\Users\admin\
 
 ```
+### gitee操作
+```bash
+# 增加git工程：
+git remote add gitee https://gitee.com/lib1256/lbvim.git
+
+# push本地提交到gitee:
+git push gitee master  https://gitee.com/lib1256/lbvim.git
+```
+
+
 
 
