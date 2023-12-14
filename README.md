@@ -192,3 +192,46 @@ ESC 离开目录，按对应字母触发功能，CTRL+j/k 翻页，BackSpace 可
 当文件浏览器打开以后，按 `~` 键，返回用户目录（$HOME）；按 `反引号`（1左边那个键），返回项目根目录，详细见：[Vinegar](https://github.com/skywind3000/vim/wiki/Vim-Vinegar-and-Oil)。
 
 
+
+## windows使用
+### nvim的操作
+1. 创建mynvim目录。在目录下创建init.vim文件。文件中增加以下内容
+```bash
+so d:/libin/.vim/vim/init.vim
+so d:/libin/.vim/vim/skywind.vim
+so d:/libin/.vim/vim/bundle.vim
+```
+2. 创建链接，nvim的操作。
+```bash
+cd /d D:\libin\.vim
+mklink /d "%appdata%\..\local\nvim" "D:\libin\.vim\mynvim"
+mklink /d "%appdata%\..\local\nvim-data" "D:\libin\.vim\cache"
+```
+3. 注册表操作。将下面内容保护为后缀名为.reg的文件。例如：neovim menu.reg。然后双击打开会关联右键菜单。之前就能右键文件使用nvim打开。
+```bash
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\open with neovim]
+"icon"="\"D:\\local\\nvim-win64\\bin\\nvim-qt.exe\""
+[HKEY_CLASSES_ROOT\*\shell\open with neovim\command]
+"" = "\"D:\\local\\nvim-win64\\bin\\nvim-qt.exe\" \"%1\""
+
+```
+### gvim的操作
+1. 创建mygvim目录。在目录下创建.vimrc文件。文件中增加以下内容
+```bash
+so ~/.vim/vim/init.vim
+so ~/.vim/vim/skywind.vim
+so ~/.vim/vim/bundle.vim
+
+set guifont=FiraCode\ NFM:h12
+set lines=42 columns=156
+```
+2. 创建链接，gvim的操作
+```bash
+mklink /d "C:\Users\admin\.vim" "D:\libin\.vim"
+copy /Y D:\libin\.vim\mygvim\.vimrc C:\Users\admin\
+
+```
+
+

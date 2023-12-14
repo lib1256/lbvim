@@ -73,7 +73,8 @@ if has_key(s:enabled, 'lb_vim')
         nmap <silent> <Leader>tr <Plug>TranslateR
         vmap <silent> <Leader>tr <Plug>TranslateRV
         let g:translator_window_enable_icon = v:true
-		let g:translator_default_engines = ['trans', 'bing','youdao', 'haici', 'iciba', 'baicizhan', 'google', 'sdcv']
+		let g:translator_default_engines = ['trans', 'bing','youdao', 'haici', 'iciba', 'google']
+		" let g:translator_default_engines = ['trans', 'bing','youdao', 'haici', 'iciba', 'baicizhan', 'google', 'sdcv']
     endif
 	Plug 'luochen1990/rainbow'
 	let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
