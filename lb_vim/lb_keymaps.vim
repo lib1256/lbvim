@@ -1376,3 +1376,6 @@ noremap <space><space> :<C-U><C-R>=printf("only")<CR><CR>
 " ----------------------------------------------------------------------
 " 使用control-tab，把buffer列表打开
 noremap <c-tab> :execute "ToggleBufExplorer"<cr>
+nnoremap <silent> <leader><space>bf :BufExplorer<CR>
+nnoremap <silent> <leader><space>bh :BufExplorerHorizontalSplit<CR>
+nnoremap <silent> <leader><space>bv :BufExplorerVerticalSplit<CR>
