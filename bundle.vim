@@ -30,7 +30,7 @@ endfunc
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
     if has('nvim')
-        let g:bundle_group = ['lb_vim', 'lb_nvim', 'simple', 'basic']
+        let g:bundle_group = ['lb_vim', 'lb_nvim', 'simple', 'basic', 'lightline', 'matchup', 'airline', 'neovim', 'nerdtree', 'colors']
     else
         let g:bundle_group = ['lb_vim', 'simple', 'basic']
     endif
@@ -48,7 +48,6 @@ call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 "----------------------------------------------------------------------
 if has_key(s:enabled, 'lb_vim')
     Plug 'yianwillis/vimcdoc'
-    Plug 'glepnir/nvim-lua-guide-zh'
 	Plug 'skywind3000/asyncrun.vim'
     Plug 'skywind3000/asynctasks.vim'
     Plug 'skywind3000/vim-quickui'
@@ -101,11 +100,14 @@ if has_key(s:enabled, 'lb_vim')
                 \		'nerdtree': 0,
                 \	}
                 \}
+	Plug 'mbbill/undotree'
+	Plug 'jlanzarotta/bufexplorer'
 endif
 "----------------------------------------------------------------------
 " package group - lb_nvim
 "----------------------------------------------------------------------
 if has_key(s:enabled, 'lb_nvim')
+    Plug 'glepnir/nvim-lua-guide-zh'
 endif
 "----------------------------------------------------------------------
 " package group - simple

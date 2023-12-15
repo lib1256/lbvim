@@ -23,8 +23,8 @@ for i in range(10)
 	endif
 endfor
 
-noremap <silent><m-t> :tabnew<cr>
-inoremap <silent><m-t> <ESC>:tabnew<cr>
+" noremap <silent><m-t> :tabnew<cr>
+" inoremap <silent><m-t> <ESC>:tabnew<cr>
 noremap <silent><m-w> :tabclose<cr>
 inoremap <silent><m-w> <ESC>:tabclose<cr>
 noremap <m-s> :w<cr>
@@ -34,13 +34,13 @@ inoremap <m-s> <esc>:w<cr>
 "----------------------------------------------------------------------
 " VimTools
 "----------------------------------------------------------------------
-for s:index in range(10)
-	let s:button = (s:index > 0)? 'F'.s:index : 'F10'
-	if has('gui_running')
-		exec "noremap <C-".s:button."> :AsyncTask task-c-f".s:index . '<cr>'
-		exec "inoremap <C-".s:button."> <ESC>:AsyncTask task-c-f".s:index . '<cr>'
-	endif
-endfor
+"for s:index in range(10)
+"	let s:button = (s:index > 0)? 'F'.s:index : 'F10'
+"	if has('gui_running')
+"		exec "noremap <C-".s:button."> :AsyncTask task-c-f".s:index . '<cr>'
+"		exec "inoremap <C-".s:button."> <ESC>:AsyncTask task-c-f".s:index . '<cr>'
+"	endif
+"endfor
 
 
 
@@ -75,9 +75,9 @@ nnoremap <space>y yiw
 nnoremap <C-S> :w<cr>
 inoremap <C-S> <ESC>:w<cr>
 
-nnoremap <silent><m-t> :tabnew<cr>
-vnoremap <silent><m-t> <ESC>:tabnew<cr>
-inoremap <silent><m-t> <ESC>:tabnew<cr>
+" nnoremap <silent><m-t> :tabnew<cr>
+" vnoremap <silent><m-t> <ESC>:tabnew<cr>
+" inoremap <silent><m-t> <ESC>:tabnew<cr>
 nnoremap <silent><m-w> :tabclose<cr>
 inoremap <silent><m-w> <ESC>:tabclose<cr>
 nnoremap <silent><m-v> :close<cr>
@@ -101,7 +101,7 @@ inoremap <M-y> <c-\><c-o>d$
 cnoremap <M-h> <c-left>
 cnoremap <M-l> <c-right>
 cnoremap <M-b> <c-left>
-cnoremap <M-f> <c-right>
+" cnoremap <M-f> <c-right>
 
 
 "----------------------------------------------------------------------
@@ -236,47 +236,47 @@ nnoremap <silent><space>jm :call Tools_SwitchMakeFile()<cr>
 "----------------------------------------------------------------------
 " tasks
 "----------------------------------------------------------------------
-noremap <silent><s-f12> :AsyncTaskEdit<cr>
-inoremap <silent><s-f12> <ESC>:AsyncTaskEdit<cr>
-noremap <silent><f12> :TaskFinder<cr>
-inoremap <silent><f12> <ESC>:TaskFinder<cr>
-noremap <silent><c-f12> :AsyncTaskEnviron profile debug release static<cr>
-inoremap <silent><c-f12> <ESC>:AsyncTaskEnviron profile debug release static<cr>
-
-noremap <silent><F5> :AsyncTask file-run<cr>
-noremap <silent><F6> :AsyncTask make<cr>
-noremap <silent><F7> :AsyncTask emake<cr>
-noremap <silent><F8> :AsyncTask emake-exe<cr>
-noremap <silent><F9> :AsyncTask file-build<cr>
-noremap <silent><F10> :call asyncrun#quickfix_toggle(6)<cr>
-noremap <silent><F11> :AsyncTask file-debug<cr>
-noremap <silent><s-f5> :AsyncTask project-run<cr>
-noremap <silent><s-f6> :AsyncTask project-test<cr>
-noremap <silent><s-f7> :AsyncTask project-init<cr>
-noremap <silent><s-f8> :AsyncTask project-install<cr>
-noremap <silent><s-f9> :AsyncTask project-build<cr>
-noremap <silent><s-f11> :AsyncTask project-debug<cr>
-
-inoremap <silent><F5> <ESC>:AsyncTask file-run<cr>
-inoremap <silent><F6> <ESC>:AsyncTask make<cr>
-inoremap <silent><F7> <ESC>:AsyncTask emake<cr>
-inoremap <silent><F8> <ESC>:AsyncTask emake-exe<cr>
-inoremap <silent><F9> <ESC>:AsyncTask file-build<cr>
-inoremap <silent><F10> <ESC>:call asyncrun#quickfix_toggle(6)<cr>
-inoremap <silent><s-f5> <ESC>:AsyncTask project-run<cr>
-inoremap <silent><s-f6> <ESC>:AsyncTask project-test<cr>
-inoremap <silent><s-f7> <ESC>:AsyncTask project-init<cr>
-inoremap <silent><s-f8> <ESC>:AsyncTask project-install<cr>
-inoremap <silent><s-f9> <ESC>:AsyncTask project-build<cr>
-
-noremap <silent><f1> :AsyncTask task-f1<cr>
-noremap <silent><f2> :AsyncTask task-f2<cr>
-noremap <silent><f3> :AsyncTask task-f3<cr>
-noremap <silent><f4> :AsyncTask task-f4<cr>
-inoremap <silent><f1> <ESC>:AsyncTask task-f1<cr>
-inoremap <silent><f2> <ESC>:AsyncTask task-f2<cr>
-inoremap <silent><f3> <ESC>:AsyncTask task-f3<cr>
-inoremap <silent><f4> <ESC>:AsyncTask task-f4<cr>
+" noremap <silent><s-f12> :AsyncTaskEdit<cr>
+" inoremap <silent><s-f12> <ESC>:AsyncTaskEdit<cr>
+" noremap <silent><f12> :TaskFinder<cr>
+" inoremap <silent><f12> <ESC>:TaskFinder<cr>
+" noremap <silent><c-f12> :AsyncTaskEnviron profile debug release static<cr>
+" inoremap <silent><c-f12> <ESC>:AsyncTaskEnviron profile debug release static<cr>
+" 
+" noremap <silent><F5> :AsyncTask file-run<cr>
+" noremap <silent><F6> :AsyncTask make<cr>
+" noremap <silent><F7> :AsyncTask emake<cr>
+" noremap <silent><F8> :AsyncTask emake-exe<cr>
+" noremap <silent><F9> :AsyncTask file-build<cr>
+" noremap <silent><F10> :call asyncrun#quickfix_toggle(6)<cr>
+" noremap <silent><F11> :AsyncTask file-debug<cr>
+" noremap <silent><s-f5> :AsyncTask project-run<cr>
+" noremap <silent><s-f6> :AsyncTask project-test<cr>
+" noremap <silent><s-f7> :AsyncTask project-init<cr>
+" noremap <silent><s-f8> :AsyncTask project-install<cr>
+" noremap <silent><s-f9> :AsyncTask project-build<cr>
+" noremap <silent><s-f11> :AsyncTask project-debug<cr>
+" 
+" inoremap <silent><F5> <ESC>:AsyncTask file-run<cr>
+" inoremap <silent><F6> <ESC>:AsyncTask make<cr>
+" inoremap <silent><F7> <ESC>:AsyncTask emake<cr>
+" inoremap <silent><F8> <ESC>:AsyncTask emake-exe<cr>
+" inoremap <silent><F9> <ESC>:AsyncTask file-build<cr>
+" inoremap <silent><F10> <ESC>:call asyncrun#quickfix_toggle(6)<cr>
+" inoremap <silent><s-f5> <ESC>:AsyncTask project-run<cr>
+" inoremap <silent><s-f6> <ESC>:AsyncTask project-test<cr>
+" inoremap <silent><s-f7> <ESC>:AsyncTask project-init<cr>
+" inoremap <silent><s-f8> <ESC>:AsyncTask project-install<cr>
+" inoremap <silent><s-f9> <ESC>:AsyncTask project-build<cr>
+" 
+" noremap <silent><f1> :AsyncTask task-f1<cr>
+" noremap <silent><f2> :AsyncTask task-f2<cr>
+" noremap <silent><f3> :AsyncTask task-f3<cr>
+" noremap <silent><f4> :AsyncTask task-f4<cr>
+" inoremap <silent><f1> <ESC>:AsyncTask task-f1<cr>
+" inoremap <silent><f2> <ESC>:AsyncTask task-f2<cr>
+" inoremap <silent><f3> <ESC>:AsyncTask task-f3<cr>
+" inoremap <silent><f4> <ESC>:AsyncTask task-f4<cr>
 
 
 "----------------------------------------------------------------------
@@ -321,8 +321,8 @@ nnoremap <leader>cb6 :call vimmake#update_tags('!', 'py', '.cscopy')<cr>
 "----------------------------------------------------------------------
 "noremap <silent><C-F10> :call Toggle_Taglist()<cr>
 "inoremap <silent><C-F10> <c-\><c-o>:call Toggle_Taglist()<cr>
-noremap <silent><S-F10> :call quickmenu#toggle(0)<cr>
-inoremap <silent><S-F10> <ESC>:call quickmenu#toggle(0)<cr>
+"noremap <silent><S-F10> :call quickmenu#toggle(0)<cr>
+"inoremap <silent><S-F10> <ESC>:call quickmenu#toggle(0)<cr>
 noremap <silent><M-;> :call quickui#tools#preview_tag('')<cr>
 noremap <silent><M-:> :PreviewClose<cr>
 nnoremap <silent><tab>; :PreviewGoto edit<cr>
@@ -488,10 +488,10 @@ nnoremap <space>ll :<c-p><cr>
 "----------------------------------------------------------------------
 " quickmenu
 "----------------------------------------------------------------------
-noremap <silent><c-f10> :call quickmenu#toggle(1)<cr>
-inoremap <silent><c-f10> <ESC>:call quickmenu#toggle(1)<cr>
-noremap <silent><c-f11> :call quickmenu#toggle(2)<cr>
-inoremap <silent><c-f11> <ESC>:call quickmenu#toggle(2)<cr>
+"noremap <silent><c-f10> :call quickmenu#toggle(1)<cr>
+"inoremap <silent><c-f10> <ESC>:call quickmenu#toggle(1)<cr>
+"noremap <silent><c-f11> :call quickmenu#toggle(2)<cr>
+"inoremap <silent><c-f11> <ESC>:call quickmenu#toggle(2)<cr>
 nnoremap <silent>g5 :PreviewTag<cr>
 nnoremap <silent><space>ww :call asclib#touch_file('wsgi')<cr>
 

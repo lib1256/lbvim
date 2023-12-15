@@ -1,12 +1,4 @@
 "======================================================================
-"
-" keymaps.vim - keymaps start with using <space>
-"
-" Created by skywind on 2016/10/12
-" Last Modified: 2018/05/02 13:05
-"
-"======================================================================
-
 function! s:ErrorMsg(msg)
 	echohl ErrorMsg
 	echom ' [ERROR]: '. a:msg
@@ -1189,181 +1181,20 @@ function! TransInterface(args, openType)
 	return cmd
 endfunction
 
-
-"----------------------------------------------------------------------
-" tab switching
-"----------------------------------------------------------------------
-let s:array = [')', '!', '@', '#', '$', '%', '^', '&', '*', '(']
-for i in range(10)
-	let x = (i == 0)? 10 : i
-	let c = s:array[i]
-	exec "noremap <silent><M-".i."> :tabn ".x."<cr>"
-	exec "inoremap <silent><M-".i."> <ESC>:tabn ".x."<cr>"
-	if get(g:, 'vim_no_meta_shift_num', 0) == 0
-		exec "noremap <silent><M-".c."> :tabn ".x."<cr>"
-		exec "inoremap <silent><M-".c."> <ESC>:tabn ".x."<cr>"
-	endif
-endfor
-
-noremap <silent><m-t> :tabnew<cr>
-inoremap <silent><m-t> <ESC>:tabnew<cr>
-noremap <silent><m-w> :tabclose<cr>
-inoremap <silent><m-w> <ESC>:tabclose<cr>
-noremap <m-s> :w<cr>
-inoremap <m-s> <esc>:w<cr>
-
-
-"----------------------------------------------------------------------
-" window 
-"----------------------------------------------------------------------
-noremap <silent><space>= :resize +3<cr>
-noremap <silent><space>- :resize -3<cr>
-noremap <silent><space>, :vertical resize -3<cr>
-noremap <silent><space>. :vertical resize +3<cr>
-
-noremap <silent><space>hh :nohl<cr>
-noremap <silent><bs> :nohl<cr>:redraw!<cr>
-noremap <silent><tab>, :call Tab_MoveLeft()<cr>
-noremap <silent><tab>. :call Tab_MoveRight()<cr>
-noremap <silent><tab>6 :VinegarOpen leftabove vs<cr>
-noremap <silent><tab>7 :VinegarOpen vs<cr>
-noremap <silent><tab>8 :VinegarOpen belowright sp<cr>
-noremap <silent><tab>9 :VinegarOpen tabedit<cr>
-noremap <silent><tab>0 :exe "NERDTree ".fnameescape(expand("%:p:h"))<cr>
-noremap <silent><tab>y :exe "NERDTree ".fnameescape(asclib#path#get_root("%"))<cr>
-noremap <silent><tab>g <c-w>p
-
-noremap <silent><space>ha :GuiSignRemove
-			\ errormarker_error errormarker_warning<cr>
-
-" replace
-noremap <space>p viw"0p
-noremap <space>y yiw
-
-" fast save
-noremap <C-S> :w<cr>
-inoremap <C-S> <ESC>:w<cr>
-
-noremap <silent><m-t> :tabnew<cr>
-inoremap <silent><m-t> <ESC>:tabnew<cr>
-noremap <silent><m-w> :tabclose<cr>
-inoremap <silent><m-w> <ESC>:tabclose<cr>
-noremap <silent><m-v> :close<cr>
-inoremap <silent><m-v> <esc>:close<cr>
-noremap <m-s> :w<cr>
-inoremap <m-s> <esc>:w<cr>
-
-
-"----------------------------------------------------------------------
-" tasks
-"----------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------
-" Movement Enhancement
-"----------------------------------------------------------------------
-noremap <M-h> b
-noremap <M-l> w
-noremap <M-j> gj
-noremap <M-k> gk
-inoremap <M-h> <c-left>
-inoremap <M-l> <c-right>
-inoremap <M-j> <c-\><c-o>gj
-inoremap <M-k> <c-\><c-o>gk
-inoremap <M-y> <c-\><c-o>d$
-cnoremap <M-h> <c-left>
-cnoremap <M-l> <c-right>
-cnoremap <M-b> <c-left>
-cnoremap <M-f> <c-right>
-
-
-"----------------------------------------------------------------------
-" fast window switching: ALT+SHIFT+HJKL
-"----------------------------------------------------------------------
-noremap <m-H> <c-w>h
-noremap <m-L> <c-w>l
-noremap <m-J> <c-w>j
-noremap <m-K> <c-w>k
-inoremap <m-H> <esc><c-w>h
-inoremap <m-L> <esc><c-w>l
-inoremap <m-J> <esc><c-w>j
-inoremap <m-K> <esc><c-w>k
-
-if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
-	set termwinkey=<c-_>
-	tnoremap <m-H> <c-_>h
-	tnoremap <m-L> <c-_>l
-	tnoremap <m-J> <c-_>j
-	tnoremap <m-K> <c-_>k
-	tnoremap <m-q> <c-\><c-n>
-	tnoremap <m-1> <c-_>1gt
-	tnoremap <m-2> <c-_>2gt
-	tnoremap <m-3> <c-_>3gt
-	tnoremap <m-4> <c-_>4gt
-	tnoremap <m-5> <c-_>5gt
-	tnoremap <m-6> <c-_>6gt
-	tnoremap <m-7> <c-_>7gt
-	tnoremap <m-8> <c-_>8gt
-	tnoremap <m-9> <c-_>9gt
-	tnoremap <m-0> <c-_>10gt
-elseif has('nvim')
-	tnoremap <m-H> <c-\><c-n><c-w>h
-	tnoremap <m-L> <c-\><c-n><c-w>l
-	tnoremap <m-J> <c-\><c-n><c-w>j
-	tnoremap <m-K> <c-\><c-n><c-w>k
-	tnoremap <m-q> <c-\><c-n>
-	tnoremap <m-1> <c-\><c-n>1gt
-	tnoremap <m-2> <c-\><c-n>2gt
-	tnoremap <m-3> <c-\><c-n>3gt
-	tnoremap <m-4> <c-\><c-n>4gt
-	tnoremap <m-5> <c-\><c-n>5gt
-	tnoremap <m-6> <c-\><c-n>6gt
-	tnoremap <m-7> <c-\><c-n>7gt
-	tnoremap <m-8> <c-\><c-n>8gt
-	tnoremap <m-9> <c-\><c-n>9gt
-	tnoremap <m-0> <c-\><c-n>10gt
-endif
-
-"----------------------------------------------------------------------
-" neovim system clipboard
-"----------------------------------------------------------------------
-if has('nvim')
-	nnoremap <s-insert> "*P
-	vnoremap <s-insert> "-d"*P
-	inoremap <s-insert> <c-r><c-o>*
-	vnoremap <c-insert> "*y
-	cnoremap <s-insert> <c-r>*
-endif
-
 "----------------------------------------------------------------------
 " F5 运行当前文件：根据文件类型判断方法，并且输出到 quickfix 窗口
 "----------------------------------------------------------------------
 function! ExecuteFile()
 	let cmd = ''
-	if index(['c', 'cpp', 'rs', 'go'], &ft) >= 0
-		" native 语言，把当前文件名去掉扩展名后作为可执行运行
-		" 写全路径名是因为后面 -cwd=? 会改变运行时的当前路径，所以写全路径
-		" 加双引号是为了避免路径中包含空格
-		let cmd = '"$(VIM_FILEDIR)/$(VIM_FILENOEXT)"'
-	elseif &ft == 'python'
+	if &ft == 'python'
 		let $PYTHONUNBUFFERED=1 " 关闭 python 缓存，实时看到输出
 		let cmd = 'python "$(VIM_FILEPATH)"'
 	elseif &ft == 'javascript'
 		let cmd = 'node "$(VIM_FILEPATH)"'
-	elseif &ft == 'perl'
-		let cmd = 'perl "$(VIM_FILEPATH)"'
-	elseif &ft == 'ruby'
-		let cmd = 'ruby "$(VIM_FILEPATH)"'
-	elseif &ft == 'php'
-		let cmd = 'php "$(VIM_FILEPATH)"'
 	elseif &ft == 'lua'
 		let cmd = 'lua "$(VIM_FILEPATH)"'
-	elseif &ft == 'zsh'
-		let cmd = 'zsh "$(VIM_FILEPATH)"'
 	elseif &ft == 'ps1'
 		let cmd = 'powershell -file "$(VIM_FILEPATH)"'
-	elseif &ft == 'vbs'
-		let cmd = 'cscript -nologo "$(VIM_FILEPATH)"'
 	elseif &ft == 'sh'
 		let cmd = 'bash "$(VIM_FILEPATH)"'
 	else
@@ -1501,7 +1332,7 @@ vnoremap <space><F9> :<C-U><C-R>=printf(TransInterface("", 1))<CR>
 " ----------------------------------------------------------------------
 "  F10 目录菜单
 " ----------------------------------------------------------------------
-noremap <F10> :exec "NvimTreeToggle"<cr>
+noremap <F10> :exec "NERDTreeToggle"<cr>
 noremap <space><F10> :exec "UndotreeToggle"<cr>
 " ----------------------------------------------------------------------
 "  F11 打开/关闭 Quickfix 窗口
@@ -1527,12 +1358,6 @@ vnoremap <m-p> :call FileInterface(GetUnderWord(1), "ph", 1)<CR>
 " 新标签打开文件
 noremap <m-t> :call FileInterface(GetUnderWord(2), "th", 1)<CR>
 vnoremap <m-t> :call FileInterface(GetUnderWord(1), "th", 1)<CR>
-" 上下打开文件
-noremap <m-x> :call FileInterface(GetUnderWord(2), "sh", 1)<CR>
-vnoremap <m-x> :call FileInterface(GetUnderWord(1), "sh", 1)<CR>
-" 左右打开文件
-noremap <m-]> :call FileInterface(GetUnderWord(2), "vh", 1)<CR>
-vnoremap <m-]> :call FileInterface(GetUnderWord(1), "vh", 1)<CR>
 " 当前窗口打开文件
 noremap <m-f> :call FileInterface(GetUnderWord(2), "dh", 1)<CR>
 vnoremap <m-f> :call FileInterface(GetUnderWord(1), "dh", 1)<CR>
@@ -1545,17 +1370,9 @@ vnoremap <m-o> :call FileInterface(GetUnderWord(1), 'dho', 1)<CR>
 " ----------------------------------------------------------------------
 " 按两下空格，只保存当前窗口
 noremap <space><space> :<C-U><C-R>=printf("only")<CR><CR>
-"  空格+/ 取消搜索高亮显示。
-" EasyMothion 把默认的\\都简化为空格命令。
-map <space>f <Plug>(easymotion-f)
-map <space>j <Plug>(easymotion-j)
-map <space>k <Plug>(easymotion-k)
 
 " ----------------------------------------------------------------------
 " Control 命令
 " ----------------------------------------------------------------------
 " 使用control-tab，把buffer列表打开
 noremap <c-tab> :execute "ToggleBufExplorer"<cr>
-nnoremap <silent> <leader><space>bf :BufExplorer<CR>
-nnoremap <silent> <leader><space>bh :BufExplorerHorizontalSplit<CR>
-nnoremap <silent> <leader><space>bv :BufExplorerVerticalSplit<CR>
