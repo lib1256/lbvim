@@ -243,5 +243,37 @@ git push gitee master
 ```
 
 
+## linux使用
 
+### nvim的操作
+1. 进入到nvim配置目录.config。拉取代码：
+```bash
+cd ~/.config
+rm -rf nvim/*
+git clone https://gitee.com/lib1256/lbvim.git lb_vim
+mkdir nvim
+cd nvim
+nvim init.vim
+```
+2. 在init.vim中写入以下内容
+```bash
+so ~/.config/lb_vim/init.vim
+so ~/.config/lb_vim/skywind.vim
+so ~/.config/lb_vim/bundle.vim
+```
+3. 完成后退出nvim。然后再次打开输入PlugInstall安装插件
 
+### vim的操作
+1. 打开配置文件
+```bash
+cd ~
+vim .vimrc
+```
+1. 在init.vim中写入以下内容
+```bash
+so ~/.config/lb_vim/init.vim
+so ~/.config/lb_vim/skywind.vim
+so ~/.config/lb_vim/bundle.vim
+```
+
+1. 完成后退出vim。然后再次打开输入PlugInstall安装插件
